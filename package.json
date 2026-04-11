@@ -1,0 +1,28 @@
+{
+  "name": "@flowmatrix-ai/brand",
+  "version": "0.1.0",
+  "description": "Flowmatrix brand system",
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25",
+    "npm": ">=11 <12"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./css": "./dist/index.css"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "build": "tsc && node src/css/build-css-vars.js",
+    "format": "prettier --write \"src/**/*.{ts,js,css}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}

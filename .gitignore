@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 # Internal working files
 working/
 _reference/
+
+dist
+node_modules
