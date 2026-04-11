@@ -4,4 +4,4 @@ export const spacing = {
   md: '1.5rem',
   lg: '2rem',
   xl: '3rem'
-};
+} as const;
