@@ -12,6 +12,7 @@ Foundations should include:
 - motion
 - borderWidth
 - layer
+- accent
 
 Semantics should include:
 
@@ -22,8 +23,9 @@ Semantics should include:
 - action
 - status
 - type
-- layout
 - focus if needed by the theme contract
+
+> Layout constants (container max-width, nav height) live in the consuming site, not the brand package.
 
 ## Authoring Flow
 
@@ -53,8 +55,9 @@ Start with enough coverage for the site MVP:
 - icon: `primary`, `secondary`, `inverse`
 - status: success, warning, danger
 - action: `primary`, `secondary`, `tertiary`, `danger`
-- type: `body`, `label`, `headingSm`, `headingMd`, `headingLg`
-- space: `xs`, `sm`, `md`, `lg`, `xl`
+- accent: `base`, `soft`, `bright`
+- type: each of `body`, `bodySm`, `label`, `labelStrong`, `caption`, `headingSm`, `headingMd`, `headingLg`, `display` — each as a `size` + `lineHeight` pair. No weight token.
+- space: `xs` (0.5rem), `sm` (1rem), `md` (1.5rem), `lg` (2rem), `xl` (3rem)
 - radius: `sm`, `md`, `lg`, `xl`, `pill`
 - shadow: `sm`, `md`, `lg`
 - layer: `base`, `dropdown`, `overlay`, `modal`, `toast`, `tooltip`

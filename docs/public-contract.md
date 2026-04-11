@@ -12,6 +12,7 @@ Good:
 theme.text.primary
 theme.surface.default
 theme.action.primary.background
+theme.accent.base
 theme.space.md
 ```
 
@@ -25,7 +26,7 @@ fontSize.sm
 
 ## Public Domains
 
-The initial public contract should include:
+The initial public contract includes:
 
 - `theme.text`
 - `theme.surface`
@@ -34,6 +35,7 @@ The initial public contract should include:
 - `theme.action`
 - `theme.status`
 - `theme.type`
+- `theme.accent`
 - `theme.space`
 - `theme.radius`
 - `theme.shadow`
@@ -43,17 +45,19 @@ The initial public contract should include:
 
 These named primitive domains are public in v1:
 
-- `space`
+- `space` — five named steps: `xs` (0.5rem), `sm` (1rem), `md` (1.5rem), `lg` (2rem), `xl` (3rem)
 - `radius`
 - `shadow`
 - `layer`
+- `accent` — three steps: `base`, `soft`, `bright`
 
 These stay internal in v1:
 
 - raw color palette scales
-- typography primitives
+- typography primitives (font sizes are referenced via the `type` domain)
 - motion primitives
 - border width primitives
+- layout constants (container max-width, nav height) — site-specific, not brand values
 
 ## Initial v1 Surface
 
@@ -67,6 +71,7 @@ That surface should be treated as API, especially for names under:
 - `action`
 - `status`
 - `type`
+- `accent`
 - `space`
 - `radius`
 - `shadow`

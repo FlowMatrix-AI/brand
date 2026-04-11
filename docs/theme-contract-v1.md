@@ -86,26 +86,54 @@ theme.action.danger.border
 
 ### Type
 
+Each type token exposes two properties: `size` and `lineHeight`. Font weight is not tokenized — components control weight contextually.
+
 ```ts
-theme.type.body
-theme.type.bodySm
-theme.type.label
-theme.type.labelStrong
-theme.type.caption
-theme.type.headingSm
-theme.type.headingMd
-theme.type.headingLg
-theme.type.display
+theme.type.body.size
+theme.type.body.lineHeight
+
+theme.type.bodySm.size
+theme.type.bodySm.lineHeight
+
+theme.type.label.size
+theme.type.label.lineHeight
+
+theme.type.labelStrong.size
+theme.type.labelStrong.lineHeight
+
+theme.type.caption.size
+theme.type.caption.lineHeight
+
+theme.type.headingSm.size
+theme.type.headingSm.lineHeight
+
+theme.type.headingMd.size
+theme.type.headingMd.lineHeight
+
+theme.type.headingLg.size
+theme.type.headingLg.lineHeight
+
+theme.type.display.size
+theme.type.display.lineHeight
+```
+
+### Accent
+
+```ts
+theme.accent.base
+theme.accent.soft
+theme.accent.bright
 ```
 
 ### Public Named Primitives
 
 ```ts
-theme.space.xs
-theme.space.sm
-theme.space.md
-theme.space.lg
-theme.space.xl
+// Space — five named semantic steps
+theme.space.xs   // 0.5rem
+theme.space.sm   // 1rem
+theme.space.md   // 1.5rem
+theme.space.lg   // 2rem
+theme.space.xl   // 3rem
 
 theme.radius.sm
 theme.radius.md
@@ -130,10 +158,12 @@ theme.layer.tooltip
 These are intentionally not public in the first contract:
 
 - raw color scales
-- typography primitives such as raw font sizes and weights
+- font weight (components control weight contextually; it is not a token concern)
+- raw typography primitives beyond what is exposed in `type.*.size` and `type.*.lineHeight`
 - motion primitives
 - border width primitives
 - component tokens
+- layout constants (container max-width, nav height) — site-specific constraints, not brand values
 
 ## Notes
 

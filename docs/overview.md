@@ -32,17 +32,16 @@ Current scope:
 
 - define internal foundations for color, typography, spacing, radius, shadow, motion, border width, and layer
 - define semantic tokens for text, surface, border, icon, action, status, type, and layout roles
+- expose a named `accent` primitive scale (`base`, `soft`, `bright`) for the brand accent color
 - export a resolved public `theme` object
-- emit CSS custom properties from the same source of truth
-- prepare the package to support more than one theme later
+- emit CSS custom properties from the same source of truth, dark-first with light as the override
 - document naming, stability, and change rules
 
 Out of scope for now:
 
 - component-level tokens as a public system layer
 - a component library
-- Tailwind bindings
-- full dark mode implementation
+- Tailwind bindings (structure keeps future Tailwind preset generation possible without rework)
 - Figma automation or advanced tooling integrations
 - exposing raw color palette values to app code
 
@@ -52,5 +51,6 @@ The system is succeeding when:
 
 - product UI can be built mostly with semantic theme names
 - changing palette internals does not force broad app refactors
-- the site can adopt the package without bespoke per-component hacks
-- a future second theme can be introduced without changing consumer code
+- the website can adopt the package and drop its current hand-authored variable definitions entirely
+- a future second FlowMatrix product can consume `theme` without modifying the package
+- a future additional color theme can be introduced without changing consumer code

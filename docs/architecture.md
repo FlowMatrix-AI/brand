@@ -24,6 +24,7 @@ Applications should never depend directly on foundations.
 The public `theme` should expose:
 
 - semantic UI domains: `text`, `surface`, `border`, `icon`, `action`, `status`, `type`
+- named accent primitive: `accent` (`base`, `soft`, `bright`) — the brand accent color used for decorative and interactive accent surfaces that do not map cleanly to a single semantic role
 - named layout primitives: `space`, `radius`, `shadow`, `layer`
 
 The public `theme` should not expose:
@@ -32,6 +33,7 @@ The public `theme` should not expose:
 - raw typography primitives such as font weights or point sizes
 - motion primitives yet
 - border width primitives yet
+- layout constants such as container max-width or nav height (these are site-specific, not brand values)
 
 ### Why These Primitives Are Public
 
@@ -55,6 +57,8 @@ The initial semantic layer should cover:
 - `status`
 - `type`
 - `layout` internally, where helpful for higher-level semantic sizing and spacing decisions
+
+In addition, `accent` is exposed as a named primitive scale rather than a semantic domain, because it is used decoratively (gradient text, diagram highlights, atmospheric glows) in ways that cannot be cleanly expressed as a single semantic role.
 
 Focus styling should initially be represented through `border.focus` and related action or status tokens. A dedicated public `focus` domain can be introduced later if the product needs a more expressive focus system.
 
@@ -93,74 +97,139 @@ export const theme = {
 
 A single source of truth should produce both:
 
-- TypeScript runtime exports
-- CSS custom properties
+- TypeScript runtime exports (`dist/index.js` + `.d.ts`)
+- CSS custom properties (`dist/index.css`)
+
+Foundation values should be authored as typed TypeScript objects (not as raw CSS strings) so that the same data can drive additional output formats later. The structure specifically keeps a future Tailwind config/preset generator possible without refactoring the foundation layer.
 
 Later, the same source can also generate:
 
-- Tailwind tokens
+- Tailwind tokens (theme preset)
 - component token inputs
 - docs or token references
 
 ## Package Boundary
 
-Recommended public surface:
+Confirmed public surface:
 
-- `@flowmatrix/brand` -> `theme` and public types only
+- `@flowmatrix-ai/brand` → `theme` and public types only (default entrypoint)
+- `@flowmatrix-ai/brand/css` → generated CSS custom properties file
 
-Recommended internal authoring surface:
+No `/internal` entrypoint in v1. The internal boundary is enforced by source layout. An internal entrypoint can be added later without changing the consumer API.
 
-- `@flowmatrix/brand/internal` -> foundations, semantic maps, builders, and generation utilities
+### Export Map
 
-If a separate internal entrypoint is not created immediately, the repo should still be organized so that boundary is easy to add without refactoring.
+```json
+"exports": {
+  ".": "./dist/index.js",
+  "./css": "./dist/index.css"
+}
+```
+
+### Package Metadata
+
+```json
+{
+  "name": "@flowmatrix-ai/brand",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": { "node": ">=24 <25", "npm": ">=11 <12" },
+  "files": ["dist"],
+  "exports": {
+    ".": "./dist/index.js",
+    "./css": "./dist/index.css"
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com" }
+}
+```
+
+Align `engines` with the website Node/npm baseline.
+
+## Publishing
+
+Registry: GitHub Packages (`https://npm.pkg.github.com`).
+
+**Brand repo `.npmrc`:**
+```
+@flowmatrix-ai:registry=https://npm.pkg.github.com
+```
+
+**`publishConfig` in `package.json`:**
+```json
+{ "registry": "https://npm.pkg.github.com" }
+```
+
+**Publish trigger:** push to a tag matching `v*` (e.g. `v0.1.0`).
+
+**Publish workflow permissions:** `contents: read`, `packages: write`.
+
+**Secret name:** `FLOWMATRIX_GITHUB_TOKEN` — must be set in the brand repo for publishing and in any consuming repo's CI for authenticated installs.
+
+**`setup-node` scope:** `@flowmatrix-ai`.
+
+**Consumer `.npmrc`:**
+```
+@flowmatrix-ai:registry=https://npm.pkg.github.com
+```
+The consuming repo's CI must set `NODE_AUTH_TOKEN` to `FLOWMATRIX_GITHUB_TOKEN` so `npm ci` can authenticate.
+
+## CSS Variable Prefix
+
+All CSS custom properties emitted by this package use the `--fm-` prefix (e.g. `--fm-text-primary`, `--fm-surface-canvas`, `--fm-accent-base`). This prefix is already established throughout the website codebase and stands for FlowMatrix. It is confirmed as the permanent prefix.
+
+Some CSS variables are emitted without a corresponding TypeScript `theme` token. The font stack is the primary example:
+
+```css
+--fm-font-sans: Inter, 'Segoe UI', Roboto, Helvetica Neue, Arial, sans-serif;
+```
+
+This is a CSS-only constant — it appears in `dist/index.css` but is not exposed in the `theme` JS export. The brand package defines the stack; the consuming site is responsible for loading the actual font (font loading is a deployment concern, not a token concern).
 
 ## Recommended Source Layout
 
-A clean package structure should look like this:
-
 ```text
-packages/branding/
-  src/
-    foundations/
-      color.ts
-      spacing.ts
-      typography.ts
-      radius.ts
-      shadow.ts
-      motion.ts
-      layer.ts
-      border-width.ts
-      index.ts
-    semantics/
-      text.ts
-      surface.ts
-      border.ts
-      icon.ts
-      action.ts
-      status.ts
-      type.ts
-      layout.ts
-      index.ts
-    theme/
-      build-theme.ts
-      light.ts
-      index.ts
-    css/
-      build-css-vars.ts
-      index.ts
-    types/
-      foundations.ts
-      semantics.ts
-      theme.ts
+src/
+  foundations/
+    color.ts
+    spacing.ts
+    typography.ts
+    radius.ts
+    shadow.ts
+    motion.ts
+    layer.ts
+    border-width.ts
     index.ts
+  semantics/
+    text.ts
+    surface.ts
+    border.ts
+    icon.ts
+    action.ts
+    status.ts
+    type.ts
+    layout.ts
+    index.ts
+  theme/
+    build-theme.ts
+    dark.ts
+    light.ts
+    index.ts
+  css/
+    build-css-vars.ts
+    index.ts
+  types/
+    foundations.ts
+    semantics.ts
+    theme.ts
+  index.ts
 ```
 
 ## Theming Readiness
 
-We should ship one light theme first, but the architecture should assume multiple themes are possible.
+The first theme shipped uses dark as the `:root` default. Light is the override, exposed via both `@media (prefers-color-scheme: light)` and `[data-theme='light']`. This matches the website's existing pattern and the FlowMatrix brand identity.
 
-That means:
+The architecture must assume multiple themes are possible:
 
 - semantics resolve through a theme builder, not hard-coded scattered constants
-- CSS variables use theme-scoped naming
-- adding `dark` or client-specific themes later should not require a consumer API change
+- CSS variables use themed naming with `--fm-` prefix
+- adding a second theme later should not require a consumer API change

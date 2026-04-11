@@ -27,7 +27,7 @@ Foundations may change. Semantic meaning should change much less often.
 
 ## Current Direction
 
-The package target is `@flowmatrix/brand`.
+The package target is `@flowmatrix-ai/brand`, published to GitHub Packages (`https://npm.pkg.github.com`).
 
 Applications should consume `theme`.
 
