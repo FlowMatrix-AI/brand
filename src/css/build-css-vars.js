@@ -156,6 +156,30 @@ const css = `
     --fm-shadow-sm: ${rawValues.shadow.soft.light};
     --fm-shadow-md: ${rawValues.shadow.gold.light};
     --fm-shadow-lg: ${rawValues.shadow.cardHover.light};
+
+    --fm-action-primary-background: ${rawValues.colors.gold.light};
+    --fm-action-primary-backgroundHover: #7d5816;
+    --fm-action-primary-backgroundActive: #64470f;
+    --fm-action-primary-text: #ffffff;
+    --fm-action-primary-border: transparent;
+
+    --fm-action-secondary-background: rgba(19, 23, 34, 0.035);
+    --fm-action-secondary-backgroundHover: rgba(19, 23, 34, 0.07);
+    --fm-action-secondary-backgroundActive: rgba(19, 23, 34, 0.11);
+    --fm-action-secondary-text: #131722;
+    --fm-action-secondary-border: rgba(19, 23, 34, 0.28);
+
+    --fm-action-tertiary-background: transparent;
+    --fm-action-tertiary-backgroundHover: rgba(19, 23, 34, 0.04);
+    --fm-action-tertiary-backgroundActive: rgba(19, 23, 34, 0.08);
+    --fm-action-tertiary-text: #475163;
+    --fm-action-tertiary-border: transparent;
+
+    --fm-action-danger-background: #c43f3f;
+    --fm-action-danger-backgroundHover: #e25656;
+    --fm-action-danger-backgroundActive: #ef4444;
+    --fm-action-danger-text: #ffffff;
+    --fm-action-danger-border: transparent;
   }
 }
 
@@ -197,6 +221,30 @@ html[data-theme='light'] {
   --fm-shadow-sm: ${rawValues.shadow.soft.light};
   --fm-shadow-md: ${rawValues.shadow.gold.light};
   --fm-shadow-lg: ${rawValues.shadow.cardHover.light};
+
+  --fm-action-primary-background: ${rawValues.colors.gold.light};
+  --fm-action-primary-backgroundHover: #7d5816;
+  --fm-action-primary-backgroundActive: #64470f;
+  --fm-action-primary-text: #ffffff;
+  --fm-action-primary-border: transparent;
+
+  --fm-action-secondary-background: rgba(19, 23, 34, 0.035);
+  --fm-action-secondary-backgroundHover: rgba(19, 23, 34, 0.07);
+  --fm-action-secondary-backgroundActive: rgba(19, 23, 34, 0.11);
+  --fm-action-secondary-text: #131722;
+  --fm-action-secondary-border: rgba(19, 23, 34, 0.28);
+
+  --fm-action-tertiary-background: transparent;
+  --fm-action-tertiary-backgroundHover: rgba(19, 23, 34, 0.04);
+  --fm-action-tertiary-backgroundActive: rgba(19, 23, 34, 0.08);
+  --fm-action-tertiary-text: #475163;
+  --fm-action-tertiary-border: transparent;
+
+  --fm-action-danger-background: #c43f3f;
+  --fm-action-danger-backgroundHover: #e25656;
+  --fm-action-danger-backgroundActive: #ef4444;
+  --fm-action-danger-text: #ffffff;
+  --fm-action-danger-border: transparent;
 }
 `;
 
