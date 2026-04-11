@@ -85,10 +85,16 @@ export const theme = {
     },
   },
   space: {
-    xs: '4px',
-    sm: '8px',
-    md: '12px',
-    lg: '16px',
+    xs: 'var(--fm-space-xs)',  // 0.5rem
+    sm: 'var(--fm-space-sm)',  // 1rem
+    md: 'var(--fm-space-md)',  // 1.5rem
+    lg: 'var(--fm-space-lg)',  // 2rem
+    xl: 'var(--fm-space-xl)',  // 3rem
+  },
+  accent: {
+    base: 'var(--fm-accent-base)',
+    soft: 'var(--fm-accent-soft)',
+    bright: 'var(--fm-accent-bright)',
   },
 }
 ```
@@ -180,7 +186,7 @@ All CSS custom properties emitted by this package use the `--fm-` prefix (e.g. `
 Some CSS variables are emitted without a corresponding TypeScript `theme` token. The font stack is the primary example:
 
 ```css
---fm-font-sans: Inter, 'Segoe UI', Roboto, Helvetica Neue, Arial, sans-serif;
+--fm-font-sans: Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 ```
 
 This is a CSS-only constant — it appears in `dist/index.css` but is not exposed in the `theme` JS export. The brand package defines the stack; the consuming site is responsible for loading the actual font (font loading is a deployment concern, not a token concern).

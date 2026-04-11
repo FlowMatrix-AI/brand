@@ -14,7 +14,7 @@ Deliverables:
 
 Exit criteria:
 
-- docs are reviewed and accepted (complete — see `planning/DECISIONS.md` for all 18 locked decisions)
+- docs are reviewed and accepted (complete — all 18 design decisions are locked and reflected in `docs/` and `planning/roadmap.md`)
 - the public versus internal boundary is clear
 - the MVP token domains are agreed
 
@@ -171,7 +171,6 @@ Deliverables:
 - document the local dev auth flow for new contributors (`.npmrc` + personal access token with `read:packages`)
 - confirm Dependabot has `read:packages` access in the org settings
 - tag and release `v0.1.0` as the stable baseline post-cutover
-- archive or close out the GROUNDING and DECISIONS planning docs as historical record
 
 Exit criteria:
 

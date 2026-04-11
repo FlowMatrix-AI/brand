@@ -2,6 +2,8 @@
 
 This document is the reference for Phase 5 (Site Cutover). It maps every current CSS variable in `website/src/styles/variables.css` to its outcome at cutover: replaced by the brand package, kept in the website, or removed.
 
+> **Important distinction:** `variables.css` has two levels of names. The raw primitives (`--color-bg`, `--shadow-soft`, etc.) are defined in the theme blocks. The alias block at the bottom maps those to `--fm-*` names (`--fm-color-bg`, `--fm-shadow-soft`, etc.). **Components consume the alias names.** At cutover, the alias block is deleted — so all component references to the old alias names must be renamed to the new brand contract names. Section 1.5 below is the complete rename table for that operation.
+
 ---
 
 ## 1. Tokens Replaced By The Brand Package
@@ -80,6 +82,87 @@ Named steps replace all numeric `--space-N` references across components and pag
 
 ---
 
+## 1.5 Component Source Rename Table
+
+This is the complete list of `--fm-*` variable names that **component and page code currently uses** and the brand contract name each must be updated to. These are the actual find-and-replace operations needed in Phase 5.
+
+> Names already matching the brand contract are not listed here — they require no change.
+
+### Color — Text and Surface
+
+| Current alias (in components) | Brand contract name | Notes |
+|---|---|---|
+| `--fm-color-bg` | `--fm-surface-canvas` | |
+| `--fm-color-bg-soft` | `--fm-surface-subtle` | |
+| `--fm-color-bg-elevated` | `--fm-surface-elevated` | |
+| `--fm-color-surface` | `--fm-surface-default` | |
+| `--fm-color-text` | `--fm-text-primary` | |
+| `--fm-color-text-muted` | `--fm-text-secondary` | |
+| `--fm-color-text-faint` | `--fm-text-muted` | |
+
+### Color — Accent / Gold
+
+| Current alias (in components) | Brand contract name | Notes |
+|---|---|---|
+| `--fm-color-gold` | `--fm-accent-base` | |
+| `--fm-color-gold-soft` | `--fm-accent-soft` | |
+| `--fm-color-gold-bright` | `--fm-accent-bright` | |
+
+### Color — Status and Focus
+
+| Current alias (in components) | Brand contract name | Notes |
+|---|---|---|
+| `--fm-color-danger` | `--fm-status-danger-text` | |
+| `--fm-color-danger-soft` | `--fm-status-danger-surface` | |
+| `--fm-focus-ring` | `--fm-border-focus` | |
+| `--fm-focus-ring-glow` | stays as `--fm-focus-ring-glow` | website-only; redefine in site CSS |
+
+### Shadow
+
+| Current alias (in components) | Brand contract name | Notes |
+|---|---|---|
+| `--fm-shadow-soft` | `--fm-shadow-sm` | |
+| `--fm-shadow-card-hover` | `--fm-shadow-lg` | |
+| `--fm-shadow-gold` | stays as `--fm-shadow-gold` | website-only; redefine in site CSS |
+
+### Space
+
+| Current alias (in components) | Brand contract name | Notes |
+|---|---|---|
+| `--fm-space-1` | inline `0.25rem` | no named step equivalent; sparse usage |
+| `--fm-space-2` | `--fm-space-xs` | |
+| `--fm-space-3` | inline `0.75rem` or round | sparse usage |
+| `--fm-space-4` | `--fm-space-sm` | |
+| `--fm-space-5` | inline `1.25rem` or round | sparse usage |
+| `--fm-space-6` | `--fm-space-md` | |
+| `--fm-space-8` | `--fm-space-lg` | |
+| `--fm-space-10` | inline `2.5rem` or round to lg | sparse usage |
+| `--fm-space-12` | `--fm-space-xl` | |
+| `--fm-space-14` | inline `3.5rem` or round to xl | sparse usage |
+| `--fm-space-16` | inline `4rem` or round to xl | sparse usage |
+
+### Layout Constants
+
+These stay in the website forever but the alias names must remain resolvable.
+
+| Current alias (in components) | Action at cutover |
+|---|---|
+| `--fm-layout-container-max` | redefine directly in website `:root` (remove reliance on `--container-max` intermediary) |
+| `--fm-layout-nav-height` | redefine directly in website `:root` with responsive overrides |
+
+### No Change Needed
+
+These alias names already match the brand contract output and require no component edits:
+
+- `--fm-border-default`
+- `--fm-border-strong`
+- `--fm-radius-sm`, `--fm-radius-md`, `--fm-radius-lg`, `--fm-radius-xl`
+- `--fm-font-sans`
+- `--fm-type-body-line-height`
+- All `--fm-alpha-*`, `--fm-body-*`, `--fm-surface-*`, `--fm-nav-*`, `--fm-footer-*`, `--fm-home-*`, `--fm-hero-*`, `--fm-legal-*`, `--fm-grain-*`, `--fm-pulse-*`, `--fm-color-button-*` (website-specific, redefined in site CSS)
+
+---
+
 ## 2. Tokens Deleted At Cutover (No Replacement Needed)
 
 These are in the alias block at the bottom of `variables.css`. They exist only to bridge old names to `--fm-*` names and become redundant once the brand package provides `--fm-*` directly.
@@ -136,14 +219,18 @@ After cutover the file looks like:
 :root {
   --container-max: 1120px;
   --nav-height: 72px;
+
+  /* --fm- aliases keep base.css working without edits */
+  --fm-layout-container-max: 1120px;
+  --fm-layout-nav-height: 72px;
 }
 
 @media (max-width: 980px) {
-  :root { --nav-height: 68px; }
+  :root { --nav-height: 68px; --fm-layout-nav-height: 68px; }
 }
 
 @media (max-width: 640px) {
-  :root { --nav-height: 64px; }
+  :root { --nav-height: 64px; --fm-layout-nav-height: 64px; }
 }
 
 /* ─── Alpha / overlay layer ─────────────────────────── */

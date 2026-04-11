@@ -23,6 +23,7 @@ Foundations may change. Semantic meaning should change much less often.
 - [Public Contract](docs/public-contract.md)
 - [Theme Contract v1](docs/theme-contract-v1.md)
 - [Token Authoring](docs/token-authoring.md)
+- [Website Migration Map](docs/website-migration-map.md)
 - [Roadmap](planning/roadmap.md)
 
 ## Current Direction
