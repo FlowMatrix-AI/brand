@@ -1,0 +1,147 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`token contract > matches the full token name snapshot 1`] = `
+{
+  "accent": {
+    "base": "var(--fm-accent-base)",
+    "bright": "var(--fm-accent-bright)",
+    "soft": "var(--fm-accent-soft)",
+  },
+  "action": {
+    "danger": {
+      "background": "var(--fm-action-danger-background)",
+      "backgroundActive": "var(--fm-action-danger-backgroundActive)",
+      "backgroundHover": "var(--fm-action-danger-backgroundHover)",
+      "border": "var(--fm-action-danger-border)",
+      "text": "var(--fm-action-danger-text)",
+    },
+    "primary": {
+      "background": "var(--fm-action-primary-background)",
+      "backgroundActive": "var(--fm-action-primary-backgroundActive)",
+      "backgroundHover": "var(--fm-action-primary-backgroundHover)",
+      "border": "var(--fm-action-primary-border)",
+      "text": "var(--fm-action-primary-text)",
+    },
+    "secondary": {
+      "background": "var(--fm-action-secondary-background)",
+      "backgroundActive": "var(--fm-action-secondary-backgroundActive)",
+      "backgroundHover": "var(--fm-action-secondary-backgroundHover)",
+      "border": "var(--fm-action-secondary-border)",
+      "text": "var(--fm-action-secondary-text)",
+    },
+    "tertiary": {
+      "background": "var(--fm-action-tertiary-background)",
+      "backgroundActive": "var(--fm-action-tertiary-backgroundActive)",
+      "backgroundHover": "var(--fm-action-tertiary-backgroundHover)",
+      "border": "var(--fm-action-tertiary-border)",
+      "text": "var(--fm-action-tertiary-text)",
+    },
+  },
+  "border": {
+    "default": "var(--fm-border-default)",
+    "focus": "var(--fm-border-focus)",
+    "strong": "var(--fm-border-strong)",
+    "subtle": "var(--fm-border-subtle)",
+  },
+  "icon": {
+    "inverse": "var(--fm-icon-inverse)",
+    "primary": "var(--fm-icon-primary)",
+    "secondary": "var(--fm-icon-secondary)",
+  },
+  "layer": {
+    "base": "0",
+    "dropdown": "100",
+    "modal": "300",
+    "overlay": "200",
+    "toast": "400",
+    "tooltip": "500",
+  },
+  "radius": {
+    "lg": "18px",
+    "md": "14px",
+    "pill": "9999px",
+    "sm": "10px",
+    "xl": "24px",
+  },
+  "shadow": {
+    "lg": "var(--fm-shadow-lg)",
+    "md": "var(--fm-shadow-md)",
+    "sm": "var(--fm-shadow-sm)",
+  },
+  "space": {
+    "lg": "2rem",
+    "md": "1.5rem",
+    "sm": "1rem",
+    "xl": "3rem",
+    "xs": "0.5rem",
+  },
+  "status": {
+    "danger": {
+      "border": "var(--fm-status-danger-border)",
+      "surface": "var(--fm-status-danger-surface)",
+      "text": "var(--fm-status-danger-text)",
+    },
+    "success": {
+      "border": "var(--fm-status-success-border)",
+      "surface": "var(--fm-status-success-surface)",
+      "text": "var(--fm-status-success-text)",
+    },
+    "warning": {
+      "border": "var(--fm-status-warning-border)",
+      "surface": "var(--fm-status-warning-surface)",
+      "text": "var(--fm-status-warning-text)",
+    },
+  },
+  "surface": {
+    "canvas": "var(--fm-surface-canvas)",
+    "default": "var(--fm-surface-default)",
+    "elevated": "var(--fm-surface-elevated)",
+    "inverse": "var(--fm-surface-inverse)",
+    "subtle": "var(--fm-surface-subtle)",
+  },
+  "text": {
+    "inverse": "var(--fm-text-inverse)",
+    "muted": "var(--fm-text-muted)",
+    "primary": "var(--fm-text-primary)",
+    "secondary": "var(--fm-text-secondary)",
+  },
+  "type": {
+    "body": {
+      "lineHeight": "var(--fm-type-body-lineHeight)",
+      "size": "var(--fm-type-body-size)",
+    },
+    "bodySm": {
+      "lineHeight": "var(--fm-type-bodySm-lineHeight)",
+      "size": "var(--fm-type-bodySm-size)",
+    },
+    "caption": {
+      "lineHeight": "var(--fm-type-caption-lineHeight)",
+      "size": "var(--fm-type-caption-size)",
+    },
+    "display": {
+      "lineHeight": "var(--fm-type-display-lineHeight)",
+      "size": "var(--fm-type-display-size)",
+    },
+    "headingLg": {
+      "lineHeight": "var(--fm-type-headingLg-lineHeight)",
+      "size": "var(--fm-type-headingLg-size)",
+    },
+    "headingMd": {
+      "lineHeight": "var(--fm-type-headingMd-lineHeight)",
+      "size": "var(--fm-type-headingMd-size)",
+    },
+    "headingSm": {
+      "lineHeight": "var(--fm-type-headingSm-lineHeight)",
+      "size": "var(--fm-type-headingSm-size)",
+    },
+    "label": {
+      "lineHeight": "var(--fm-type-label-lineHeight)",
+      "size": "var(--fm-type-label-size)",
+    },
+    "labelStrong": {
+      "lineHeight": "var(--fm-type-labelStrong-lineHeight)",
+      "size": "var(--fm-type-labelStrong-size)",
+    },
+  },
+}
+`;
