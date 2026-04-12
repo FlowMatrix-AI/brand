@@ -22,10 +22,12 @@
   },
   "scripts": {
     "build": "tsc && node src/css/build-css-vars.js",
+    "test": "vitest run",
     "format": "prettier --write \"src/**/*.{ts,js,css}\""
   },
   "devDependencies": {
     "prettier": "^3.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^3.0.0"
   }
 }

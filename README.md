@@ -24,6 +24,9 @@ Foundations may change. Semantic meaning should change much less often.
 - [Theme Contract v1](docs/theme-contract-v1.md)
 - [Token Authoring](docs/token-authoring.md)
 - [Website Migration Map](docs/website-migration-map.md)
+- [Versioning Policy](docs/versioning-policy.md)
+- [Deprecation Guidance](docs/deprecation.md)
+- [Release Process](docs/release-process.md)
 - [Roadmap](planning/roadmap.md)
 
 ## Current Direction
