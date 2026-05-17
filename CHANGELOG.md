@@ -11,6 +11,23 @@ This project adheres to [Semantic Versioning](https://semver.org/) and
 
 ---
 
+## [0.2.1] — 2026-05-16
+
+### Changed
+- CSS generator refactored: all hardcoded hex/rgba values now derived from `rawValues.semantic`
+  in `theme/index.ts`. Eliminates drift risk when foundation values change.
+- Light-mode CSS block DRYed via shared `colorBlock()` and `actionBlock()` helper functions.
+
+### Removed
+- `planning/` directory (10 stale planning docs from initial development)
+
+### Added
+- `CODEOWNERS` file (`@CameronBrooks11`)
+- Renovate configuration (`renovate.json`)
+- Current Status section in `docs/overview.md` and `README.md`
+
+---
+
 ## [0.2.0] — 2026-04-11
 
 ### Added
@@ -38,6 +55,7 @@ This project adheres to [Semantic Versioning](https://semver.org/) and
 - TypeScript build via `tsc` with `NodeNext` module resolution and declaration emit
 - GitHub Actions CI (`ci.yml`) and publish-on-release (`publish.yml`) workflows
 
-[Unreleased]: https://github.com/FlowMatrix-AI/brand/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/FlowMatrix-AI/brand/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/FlowMatrix-AI/brand/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/FlowMatrix-AI/brand/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/FlowMatrix-AI/brand/releases/tag/v0.1.0
