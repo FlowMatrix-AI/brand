@@ -54,3 +54,22 @@ The system is succeeding when:
 - the website can adopt the package and drop its current hand-authored variable definitions entirely
 - a future second FlowMatrix product can consume `theme` without modifying the package
 - a future additional color theme can be introduced without changing consumer code
+
+## Current Status
+
+**Version:** 0.2.0
+**Published:** GitHub Packages (`https://npm.pkg.github.com`)
+
+Phases 0–6 of the original roadmap are complete:
+
+- Package scaffolding and CI/CD ✓
+- Foundation token modules (color, spacing, radius, shadow, layer, typography) ✓
+- Semantic theme contract with 13 token groups ✓
+- CSS custom property generation (dark-first, light override) ✓
+- Snapshot-tested public contract ✓
+- Versioning policy, deprecation guidance, and release process documented ✓
+
+Remaining:
+
+- Phase 7 (MVP lock): refactor CSS generator to derive all values from foundations (eliminate hardcoded hex)
+- Phase 8 (post-MVP): component-level tokens, Tailwind preset, additional themes

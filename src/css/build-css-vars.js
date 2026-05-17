@@ -6,6 +6,88 @@ import { themeObj, rawValues } from '../../dist/theme/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const d = rawValues.semantic.dark;
+const l = rawValues.semantic.light;
+const t = rawValues.semantic.type;
+
+function colorBlock(m, i = '  ') {
+  const gold = m === d ? rawValues.colors.gold.dark : rawValues.colors.gold.light;
+  const canvas = m === d ? rawValues.colors.canvas.dark : rawValues.colors.canvas.light;
+  const shadowSoft = m === d ? rawValues.shadow.soft.dark : rawValues.shadow.soft.light;
+  const shadowGold = m === d ? rawValues.shadow.gold.dark : rawValues.shadow.gold.light;
+  const shadowHover = m === d ? rawValues.shadow.cardHover.dark : rawValues.shadow.cardHover.light;
+
+  return `${i}--fm-accent-base: ${gold};
+${i}--fm-accent-soft: ${m.accent.soft};
+${i}--fm-accent-bright: ${m.accent.bright};
+
+${i}--fm-surface-canvas: ${canvas};
+${i}--fm-surface-default: ${m.surface.default};
+${i}--fm-surface-subtle: ${m.surface.subtle};
+${i}--fm-surface-elevated: ${m.surface.elevated};
+${i}--fm-surface-inverse: ${m.surface.inverse};
+
+${i}--fm-text-primary: ${m.text.primary};
+${i}--fm-text-secondary: ${m.text.secondary};
+${i}--fm-text-muted: ${m.text.muted};
+${i}--fm-text-inverse: ${m.text.inverse};
+
+${i}--fm-border-default: ${m.border.default};
+${i}--fm-border-subtle: ${m.border.subtle};
+${i}--fm-border-strong: ${m.border.strong};
+${i}--fm-border-focus: ${m.border.focus};
+
+${i}--fm-icon-primary: ${m.icon.primary};
+${i}--fm-icon-secondary: ${m.icon.secondary};
+${i}--fm-icon-inverse: ${m.icon.inverse};
+
+${i}--fm-status-danger-text: ${m.status.danger.text};
+${i}--fm-status-danger-surface: ${m.status.danger.surface};
+${i}--fm-status-danger-border: ${m.status.danger.border};
+${i}--fm-status-success-text: ${m.status.success.text};
+${i}--fm-status-success-surface: ${m.status.success.surface};
+${i}--fm-status-success-border: ${m.status.success.border};
+${i}--fm-status-warning-text: ${m.status.warning.text};
+${i}--fm-status-warning-surface: ${m.status.warning.surface};
+${i}--fm-status-warning-border: ${m.status.warning.border};
+
+${i}--fm-shadow-sm: ${shadowSoft};
+${i}--fm-shadow-md: ${shadowGold};
+${i}--fm-shadow-lg: ${shadowHover};`;
+}
+
+function actionBlock(m, i = '  ') {
+  return `${i}--fm-action-primary-background: ${m.action.primary.background};
+${i}--fm-action-primary-backgroundHover: ${m.action.primary.backgroundHover};
+${i}--fm-action-primary-backgroundActive: ${m.action.primary.backgroundActive};
+${i}--fm-action-primary-text: ${m.action.primary.text};
+${i}--fm-action-primary-border: ${m.action.primary.border};
+${i}
+${i}--fm-action-secondary-background: ${m.action.secondary.background};
+${i}--fm-action-secondary-backgroundHover: ${m.action.secondary.backgroundHover};
+${i}--fm-action-secondary-backgroundActive: ${m.action.secondary.backgroundActive};
+${i}--fm-action-secondary-text: ${m.action.secondary.text};
+${i}--fm-action-secondary-border: ${m.action.secondary.border};
+
+${i}--fm-action-tertiary-background: ${m.action.tertiary.background};
+${i}--fm-action-tertiary-backgroundHover: ${m.action.tertiary.backgroundHover};
+${i}--fm-action-tertiary-backgroundActive: ${m.action.tertiary.backgroundActive};
+${i}--fm-action-tertiary-text: ${m.action.tertiary.text};
+${i}--fm-action-tertiary-border: ${m.action.tertiary.border};
+
+${i}--fm-action-danger-background: ${m.action.danger.background};
+${i}--fm-action-danger-backgroundHover: ${m.action.danger.backgroundHover};
+${i}--fm-action-danger-backgroundActive: ${m.action.danger.backgroundActive};
+${i}--fm-action-danger-text: ${m.action.danger.text};
+${i}--fm-action-danger-border: ${m.action.danger.border};`;
+}
+
+function lightModeVars(i = '  ') {
+  return `${colorBlock(l, i)}
+
+${actionBlock(l, i)}`;
+}
+
 const css = `
 /* auto-generated css */
 :root {
@@ -33,218 +115,40 @@ const css = `
   --fm-layer-tooltip: ${themeObj.layer.tooltip};
 
   /* Base & Accent - Dark Mode */
-  --fm-accent-base: ${rawValues.colors.gold.dark};
-  --fm-accent-soft: #f0d68a;
-  --fm-accent-bright: #f6e3a5;
-
-  --fm-surface-canvas: ${rawValues.colors.canvas.dark};
-  --fm-surface-default: #111113;
-  --fm-surface-subtle: #0d0d0f;
-  --fm-surface-elevated: #141418;
-  --fm-surface-inverse: ${rawValues.colors.neutral.dark};
-
-  --fm-text-primary: #f4f4f5;
-  --fm-text-secondary: #9b9ca1;
-  --fm-text-muted: #7f8086;
-  --fm-text-inverse: #131722;
-
-  --fm-border-default: rgba(255, 255, 255, 0.12);
-  --fm-border-subtle: rgba(255, 255, 255, 0.06);
-  --fm-border-strong: rgba(255, 255, 255, 0.22);
-  --fm-border-focus: #ffffff;
-
-  --fm-icon-primary: #f4f4f5;
-  --fm-icon-secondary: #9b9ca1;
-  --fm-icon-inverse: #131722;
-
-  --fm-status-danger-text: #f87171;
-  --fm-status-danger-surface: #fca5a5;
-  --fm-status-danger-border: #ef4444;
-  --fm-status-success-text: #34d399;
-  --fm-status-success-surface: #064e3b;
-  --fm-status-success-border: #059669;
-  --fm-status-warning-text: #fbbf24;
-  --fm-status-warning-surface: #78350f;
-  --fm-status-warning-border: #d97706;
-
-  --fm-shadow-sm: ${rawValues.shadow.soft.dark};
-  --fm-shadow-md: ${rawValues.shadow.gold.dark};
-  --fm-shadow-lg: ${rawValues.shadow.cardHover.dark};
+${colorBlock(d)}
 
   /* Type Defaults (Contract fulfillment) */
-  --fm-type-body-size: 1rem;
-  --fm-type-body-lineHeight: 1.5;
-  --fm-type-bodySm-size: 0.875rem;
-  --fm-type-bodySm-lineHeight: 1.4;
-  --fm-type-label-size: 0.875rem;
-  --fm-type-label-lineHeight: 1.2;
-  --fm-type-labelStrong-size: 0.875rem;
-  --fm-type-labelStrong-lineHeight: 1.2;
-  --fm-type-caption-size: 0.75rem;
-  --fm-type-caption-lineHeight: 1.4;
-  --fm-type-headingSm-size: 1.25rem;
-  --fm-type-headingSm-lineHeight: 1.3;
-  --fm-type-headingMd-size: 1.5rem;
-  --fm-type-headingMd-lineHeight: 1.2;
-  --fm-type-headingLg-size: 2rem;
-  --fm-type-headingLg-lineHeight: 1.1;
-  --fm-type-display-size: 3rem;
-  --fm-type-display-lineHeight: 1.05;
+  --fm-type-body-size: ${t.body.size};
+  --fm-type-body-lineHeight: ${t.body.lineHeight};
+  --fm-type-bodySm-size: ${t.bodySm.size};
+  --fm-type-bodySm-lineHeight: ${t.bodySm.lineHeight};
+  --fm-type-label-size: ${t.label.size};
+  --fm-type-label-lineHeight: ${t.label.lineHeight};
+  --fm-type-labelStrong-size: ${t.labelStrong.size};
+  --fm-type-labelStrong-lineHeight: ${t.labelStrong.lineHeight};
+  --fm-type-caption-size: ${t.caption.size};
+  --fm-type-caption-lineHeight: ${t.caption.lineHeight};
+  --fm-type-headingSm-size: ${t.headingSm.size};
+  --fm-type-headingSm-lineHeight: ${t.headingSm.lineHeight};
+  --fm-type-headingMd-size: ${t.headingMd.size};
+  --fm-type-headingMd-lineHeight: ${t.headingMd.lineHeight};
+  --fm-type-headingLg-size: ${t.headingLg.size};
+  --fm-type-headingLg-lineHeight: ${t.headingLg.lineHeight};
+  --fm-type-display-size: ${t.display.size};
+  --fm-type-display-lineHeight: ${t.display.lineHeight};
 
   /* Action Defaults */
-  --fm-action-primary-background: ${rawValues.colors.gold.dark};
-  --fm-action-primary-backgroundHover: #f0d68a;
-  --fm-action-primary-backgroundActive: #f6e3a5;
-  --fm-action-primary-text: #0b0b0c;
-  --fm-action-primary-border: transparent;
-  
-  --fm-action-secondary-background: rgba(255, 255, 255, 0.07);
-  --fm-action-secondary-backgroundHover: rgba(255, 255, 255, 0.12);
-  --fm-action-secondary-backgroundActive: rgba(255, 255, 255, 0.16);
-  --fm-action-secondary-text: #f4f4f5;
-  --fm-action-secondary-border: rgba(255, 255, 255, 0.3);
-
-  --fm-action-tertiary-background: transparent;
-  --fm-action-tertiary-backgroundHover: rgba(255, 255, 255, 0.04);
-  --fm-action-tertiary-backgroundActive: rgba(255, 255, 255, 0.08);
-  --fm-action-tertiary-text: #9b9ca1;
-  --fm-action-tertiary-border: transparent;
-
-  --fm-action-danger-background: #f87171;
-  --fm-action-danger-backgroundHover: #fca5a5;
-  --fm-action-danger-backgroundActive: #fecaca;
-  --fm-action-danger-text: #111113;
-  --fm-action-danger-border: transparent;
+${actionBlock(d)}
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --fm-accent-base: ${rawValues.colors.gold.light};
-    --fm-accent-soft: #7d5816;
-    --fm-accent-bright: #64470f;
-
-    --fm-surface-canvas: ${rawValues.colors.canvas.light};
-    --fm-surface-default: #ffffff;
-    --fm-surface-subtle: #f7f8fb;
-    --fm-surface-elevated: #ffffff;
-    --fm-surface-inverse: #131722;
-
-    --fm-text-primary: #131722;
-    --fm-text-secondary: #475163;
-    --fm-text-muted: #626d7f;
-    --fm-text-inverse: #ffffff;
-
-    --fm-border-default: rgba(19, 23, 34, 0.16);
-    --fm-border-subtle: rgba(19, 23, 34, 0.08);
-    --fm-border-strong: rgba(19, 23, 34, 0.24);
-    --fm-border-focus: #111827;
-
-    --fm-icon-primary: #131722;
-    --fm-icon-secondary: #475163;
-    --fm-icon-inverse: #ffffff;
-
-    --fm-status-danger-text: #c43f3f;
-    --fm-status-danger-surface: #e25656;
-    --fm-status-danger-border: #991b1b;
-    --fm-status-success-text: #059669;
-    --fm-status-success-surface: #d1fae5;
-    --fm-status-success-border: #10b981;
-    --fm-status-warning-text: #d97706;
-    --fm-status-warning-surface: #fef3c7;
-    --fm-status-warning-border: #f59e0b;
-
-    --fm-shadow-sm: ${rawValues.shadow.soft.light};
-    --fm-shadow-md: ${rawValues.shadow.gold.light};
-    --fm-shadow-lg: ${rawValues.shadow.cardHover.light};
-
-    --fm-action-primary-background: ${rawValues.colors.gold.light};
-    --fm-action-primary-backgroundHover: #7d5816;
-    --fm-action-primary-backgroundActive: #64470f;
-    --fm-action-primary-text: #ffffff;
-    --fm-action-primary-border: transparent;
-
-    --fm-action-secondary-background: rgba(19, 23, 34, 0.035);
-    --fm-action-secondary-backgroundHover: rgba(19, 23, 34, 0.07);
-    --fm-action-secondary-backgroundActive: rgba(19, 23, 34, 0.11);
-    --fm-action-secondary-text: #131722;
-    --fm-action-secondary-border: rgba(19, 23, 34, 0.28);
-
-    --fm-action-tertiary-background: transparent;
-    --fm-action-tertiary-backgroundHover: rgba(19, 23, 34, 0.04);
-    --fm-action-tertiary-backgroundActive: rgba(19, 23, 34, 0.08);
-    --fm-action-tertiary-text: #475163;
-    --fm-action-tertiary-border: transparent;
-
-    --fm-action-danger-background: #c43f3f;
-    --fm-action-danger-backgroundHover: #e25656;
-    --fm-action-danger-backgroundActive: #ef4444;
-    --fm-action-danger-text: #ffffff;
-    --fm-action-danger-border: transparent;
+${lightModeVars('    ')}
   }
 }
 
 html[data-theme='light'] {
-  --fm-accent-base: ${rawValues.colors.gold.light};
-  --fm-accent-soft: #7d5816;
-  --fm-accent-bright: #64470f;
-
-  --fm-surface-canvas: ${rawValues.colors.canvas.light};
-  --fm-surface-default: #ffffff;
-  --fm-surface-subtle: #f7f8fb;
-  --fm-surface-elevated: #ffffff;
-  --fm-surface-inverse: #131722;
-
-  --fm-text-primary: #131722;
-  --fm-text-secondary: #475163;
-  --fm-text-muted: #626d7f;
-  --fm-text-inverse: #ffffff;
-
-  --fm-border-default: rgba(19, 23, 34, 0.16);
-  --fm-border-subtle: rgba(19, 23, 34, 0.08);
-  --fm-border-strong: rgba(19, 23, 34, 0.24);
-  --fm-border-focus: #111827;
-
-  --fm-icon-primary: #131722;
-  --fm-icon-secondary: #475163;
-  --fm-icon-inverse: #ffffff;
-
-  --fm-status-danger-text: #c43f3f;
-  --fm-status-danger-surface: #e25656;
-  --fm-status-danger-border: #991b1b;
-  --fm-status-success-text: #059669;
-  --fm-status-success-surface: #d1fae5;
-  --fm-status-success-border: #10b981;
-  --fm-status-warning-text: #d97706;
-  --fm-status-warning-surface: #fef3c7;
-  --fm-status-warning-border: #f59e0b;
-
-  --fm-shadow-sm: ${rawValues.shadow.soft.light};
-  --fm-shadow-md: ${rawValues.shadow.gold.light};
-  --fm-shadow-lg: ${rawValues.shadow.cardHover.light};
-
-  --fm-action-primary-background: ${rawValues.colors.gold.light};
-  --fm-action-primary-backgroundHover: #7d5816;
-  --fm-action-primary-backgroundActive: #64470f;
-  --fm-action-primary-text: #ffffff;
-  --fm-action-primary-border: transparent;
-
-  --fm-action-secondary-background: rgba(19, 23, 34, 0.035);
-  --fm-action-secondary-backgroundHover: rgba(19, 23, 34, 0.07);
-  --fm-action-secondary-backgroundActive: rgba(19, 23, 34, 0.11);
-  --fm-action-secondary-text: #131722;
-  --fm-action-secondary-border: rgba(19, 23, 34, 0.28);
-
-  --fm-action-tertiary-background: transparent;
-  --fm-action-tertiary-backgroundHover: rgba(19, 23, 34, 0.04);
-  --fm-action-tertiary-backgroundActive: rgba(19, 23, 34, 0.08);
-  --fm-action-tertiary-text: #475163;
-  --fm-action-tertiary-border: transparent;
-
-  --fm-action-danger-background: #c43f3f;
-  --fm-action-danger-backgroundHover: #e25656;
-  --fm-action-danger-backgroundActive: #ef4444;
-  --fm-action-danger-text: #ffffff;
-  --fm-action-danger-border: transparent;
+${lightModeVars()}
 }
 `;
 
