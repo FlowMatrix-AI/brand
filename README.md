@@ -14,7 +14,6 @@ Foundations may change. Semantic meaning should change much less often.
 - semantic mappings such as `text.primary` and `surface.elevated`
 - a resolved public `theme` contract for applications
 - CSS custom property generation from the same source of truth
-- planning docs for taking the package from bootstrap to production use
 
 ## Docs
 
@@ -27,11 +26,10 @@ Foundations may change. Semantic meaning should change much less often.
 - [Versioning Policy](docs/versioning-policy.md)
 - [Deprecation Guidance](docs/deprecation.md)
 - [Release Process](docs/release-process.md)
-- [Roadmap](planning/roadmap.md)
 
-## Current Direction
+## Current Status
 
-The package target is `@flowmatrix-ai/brand`, published to GitHub Packages (`https://npm.pkg.github.com`).
+`@flowmatrix-ai/brand` v0.2.0, published to GitHub Packages (`https://npm.pkg.github.com`). Phases 0–6 of the original roadmap are complete.
 
 Applications should consume `theme`.
 
