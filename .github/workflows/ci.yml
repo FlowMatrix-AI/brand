@@ -22,3 +22,20 @@ jobs:
         run: npm test
       - name: Run build
         run: npm run build
+
+  # Standardized org-wide required check: aggregates all CI jobs into a single
+  # status named `ok`. See FlowMatrix-AI/eng-governance for the convention.
+  ok:
+    name: ok
+    needs: [build]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all required jobs succeeded
+        run: |
+          results="${{ join(needs.*.result, ',') }}"
+          echo "needs results: $results"
+          case "$results" in
+            *failure*|*cancelled*) echo "::error::a required CI job did not succeed"; exit 1 ;;
+          esac
+          echo "ok"
