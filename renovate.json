@@ -1,28 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "security:minimumReleaseAgeNpm", ":maintainLockFilesWeekly"],
-  "rangeStrategy": "bump",
-  "labels": ["dependencies"],
-  "schedule": ["before 7am on Monday"],
-  "timezone": "America/New_York",
-  "lockFileMaintenance": {
-    "automerge": true
-  },
+  "extends": ["local>FlowMatrix-AI/renovate-config:marketing-site"],
   "packageRules": [
-    {
-      "description": "Group and automerge non-major npm updates",
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchManagers": ["npm"],
-      "groupName": "npm non-major",
-      "automerge": true
-    },
-    {
-      "description": "Group and automerge non-major GitHub Actions",
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions non-major",
-      "automerge": true
-    },
     {
       "description": "Disable @types/node major (tied to engine version)",
       "matchPackageNames": ["@types/node"],
