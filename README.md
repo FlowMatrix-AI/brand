@@ -1,6 +1,10 @@
 # brand
 
-Flowmatrix brand system repository.
+> ⏸️ **Paused — previous (gold-era) brand system, not the go-forward source of truth.**
+>
+> This is the previous **gold/black** FlowMatrix brand system (`@flowmatrix-ai/brand`). The go-forward FlowMatrix identity is **monochrome + signal-blue** and currently lives directly in [`site-flowmatrixai-main`](https://github.com/FlowMatrix-AI/site-flowmatrixai-main), which does **not** consume this package. This package is **paused** and may be **revived** later if/when the new identity is formalized into tokens. Treat the docs below as historical for the gold-era system.
+
+FlowMatrix brand system repository.
 
 This repo defines the design-token and theme-contract foundation for a reusable brand package. The intent is to give application code a stable semantic theme API rather than exposing raw visual primitives directly.
 
@@ -22,7 +26,6 @@ Foundations may change. Semantic meaning should change much less often.
 - [Public Contract](docs/public-contract.md)
 - [Theme Contract v1](docs/theme-contract-v1.md)
 - [Token Authoring](docs/token-authoring.md)
-- [Website Migration Map](docs/website-migration-map.md)
 - [Versioning Policy](docs/versioning-policy.md)
 - [Deprecation Guidance](docs/deprecation.md)
 - [Release Process](docs/release-process.md)
